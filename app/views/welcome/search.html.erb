@@ -1,3 +1,5 @@
+
+<h1> Coursera </h1>
     <% json_response = 
     Net::HTTP.get(URI("https://api.coursera.org/api/catalog.v1/courses?q=search&query=" + @s)) %>
     
@@ -5,6 +7,18 @@
     
     <% course_names = parsed_response[:elements].map{|e| e[:name]} %>
 
-
-
     <%= course_names %>
+
+<h1> Udacity </h1>
+
+<% encoded_url = URI.encode("https://www.udacity.com/public-api/v0/courses?q=search&query=" + '"' + @s + '"') %>
+
+<% json_response_udacity =  Net::HTTP.get(URI(encoded_url)) %>
+
+<% parsed_response_udacity = MultiJson.load(json_response_udacity, symbolize_keys: true) %>
+    
+<% course_names_udacity = parsed_response_udacity[:courses].map{|f| f[:title]} %>
+
+
+
+<%= course_names_udacity %>

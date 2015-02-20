@@ -1,12 +1,10 @@
 class WelcomeController < ApplicationController
   def index
+  
   end
 
   def search
-    @s = params[:q]
-    
-
-    
+    @s = params[:q] 
   end
   
     
