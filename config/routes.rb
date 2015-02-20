@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-
+  get 'welcome/search'
+  
+  post 'welcome/search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

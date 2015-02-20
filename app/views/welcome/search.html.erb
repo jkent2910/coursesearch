@@ -1,0 +1,10 @@
+    <% json_response = 
+    Net::HTTP.get(URI("https://api.coursera.org/api/catalog.v1/courses?q=search&query=" + @s)) %>
+    
+    <% parsed_response = MultiJson.load(json_response, symbolize_keys: true) %>
+    
+    <% course_names = parsed_response[:elements].map{|e| e[:name]} %>
+
+
+
+    <%= course_names %>
